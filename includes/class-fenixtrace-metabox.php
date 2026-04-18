@@ -117,7 +117,10 @@ class FenixTrace_Metabox {
         );
 
         $slug = sanitize_title( get_post_meta( $post_id, '_fenixtrace_sku', true ) ?: $post->post_title );
-        $filename = ( $slug ?: 'product-' . $post_id ) . '_' . $post_id . '_' . gmdate( 'YmdHis' ) . '.json';
+        // Harden: sanitize_title() strips most unsafe chars but not all path
+        // separators in every locale. Whitelist to [A-Za-z0-9._-] before use.
+        $slug = preg_replace( '/[^A-Za-z0-9._-]/', '', (string) $slug );
+        $filename = ( $slug ?: 'product-' . (int) $post_id ) . '_' . (int) $post_id . '_' . gmdate( 'YmdHis' ) . '.json';
 
         update_post_meta( $post_id, '_fenixtrace_state', 'queued' );
         update_post_meta( $post_id, '_fenixtrace_last_error', '' );

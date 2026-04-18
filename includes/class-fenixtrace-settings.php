@@ -7,8 +7,20 @@ class FenixTrace_Settings {
         add_options_page( 'FenixTrace', 'FenixTrace', 'manage_options', 'fenixtrace', array( __CLASS__, 'render' ) );
     }
 
+    /**
+     * Accept the Integration Kit URL only if it uses http / https and has a
+     * host. esc_url_raw alone would still allow exotic schemes.
+     */
+    public static function sanitize_kit_url( $value ) {
+        $raw = esc_url_raw( (string) $value, array( 'http', 'https' ) );
+        if ( empty( $raw ) ) return 'http://localhost:3005';
+        $parts = wp_parse_url( $raw );
+        if ( empty( $parts['host'] ) ) return 'http://localhost:3005';
+        return $raw;
+    }
+
     public static function register_settings() {
-        register_setting( 'fenixtrace_opts', 'fenixtrace_kit_url', array( 'sanitize_callback' => 'esc_url_raw', 'default' => 'http://localhost:3005' ) );
+        register_setting( 'fenixtrace_opts', 'fenixtrace_kit_url', array( 'sanitize_callback' => array( __CLASS__, 'sanitize_kit_url' ), 'default' => 'http://localhost:3005' ) );
         register_setting( 'fenixtrace_opts', 'fenixtrace_upload_dir', array( 'sanitize_callback' => 'sanitize_text_field' ) );
         register_setting( 'fenixtrace_opts', 'fenixtrace_company_name', array( 'sanitize_callback' => 'sanitize_text_field' ) );
         register_setting( 'fenixtrace_opts', 'fenixtrace_template', array( 'sanitize_callback' => 'sanitize_text_field', 'default' => 'generic' ) );
