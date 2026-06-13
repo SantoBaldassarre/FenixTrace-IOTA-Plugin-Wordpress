@@ -72,8 +72,8 @@ The product list shows: **State** (badge), **TX Hash**, **Last Sync** for quick 
 
 ## Links
 
-- [FenixTrace Platform](https://trace.fenixsoftwarelabs.com)
-- [FenixTrace Integration Docs](https://trace.fenixsoftwarelabs.com/docs/integration-gateway)
+- [FenixTrace Platform](https://fenixtrace.com)
+- [FenixTrace Integration Docs](https://fenixtrace.com/docs/integration-gateway)
 - [Integration Kit](https://github.com/SantoBaldassarre/FenixTrace-IOTA-auto-add-product-Integration-Kit)
 - [Fenix Software Labs](https://www.fenixsoftwarelabs.com)
 
