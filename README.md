@@ -1,13 +1,13 @@
 # FenixTrace for WordPress
 
-WordPress plugin that adds a **"FenixTrace Products"** custom post type and registers them on the **IOTA L1** blockchain via the FenixTrace Integration Kit. **No WooCommerce required** — works with plain WordPress.
+WordPress plugin that adds a **"FenixTrace Products"** custom post type and sends product data to **FenixTrace** for traceability and EU-compliance — origin proof, EUDR / Digital Product Passport readiness, tamper-proof evidence and anti-counterfeiting. FenixTrace handles all notarization, evidence and compliance automatically (server-side). **No WooCommerce required** — works with plain WordPress.
 
 > Built by [Fenix Software Labs](https://www.fenixsoftwarelabs.com)
 
 ## How It Works
 
 ```
-WordPress Product (CPT) → JSON → Integration Kit → IPFS + IOTA L1 → FenixTrace Scanner
+WordPress Product (CPT) → JSON → Integration Kit → FenixTrace (notarization & compliance, server-side) → FenixTrace Scanner
 ```
 
 ## vs WooCommerce Plugin
@@ -36,7 +36,7 @@ WordPress Product (CPT) → JSON → Integration Kit → IPFS + IOTA L1 → Feni
 |---|---|
 | Kit URL | Integration Kit address (default: `http://localhost:3005`) |
 | Upload Directory | Optional path to Kit's `uploads/` folder |
-| Company Name | Your company name for blockchain records |
+| Company Name | Your company name attached to traceability records |
 | Default Template | Product category (agro, pharma, fashion, etc.) |
 | Auto-sync | Sync automatically when product is published |
 
@@ -45,15 +45,15 @@ WordPress Product (CPT) → JSON → Integration Kit → IPFS + IOTA L1 → Feni
 ### Create Products
 Go to **FenixTrace → Add Product**. Fill in title, description, and product data (SKU, barcode, price, weight, origin, template).
 
-### Sync to Blockchain
-On the product edit page → sidebar **"FenixTrace Blockchain"** → click **"Send to FenixTrace"**
+### Send to FenixTrace
+On the product edit page → sidebar **"FenixTrace Blockchain"** → click **"Send to FenixTrace"**. FenixTrace notarizes the record and handles evidence and compliance automatically (server-side).
 
 ### REST API
 ```bash
 # Sync a product
 POST /wp-json/fenixtrace/v1/sync/{id}
 
-# Get product blockchain status
+# Get product traceability status
 GET /wp-json/fenixtrace/v1/sync/{id}
 ```
 

@@ -2,7 +2,7 @@
 /**
  * Plugin Name: FenixTrace for WordPress
  * Plugin URI:  https://fenixtrace.com
- * Description: Register products on the IOTA L1 blockchain via FenixTrace. Adds a custom post type for product traceability without requiring WooCommerce.
+ * Description: Send product data to FenixTrace for traceability and EU compliance (EUDR / Digital Product Passport readiness, origin proof, tamper-proof evidence). FenixTrace handles notarization and compliance automatically, server-side. Adds a custom post type without requiring WooCommerce.
  * Version:     1.0.0
  * Author:      Fenix Software Labs
  * Author URI:  https://www.fenixsoftwarelabs.com
